@@ -1,25 +1,54 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <title>Soundbar</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
-	<div id="buttons">
-		<button class="btn" onclick="playSound('audio1.mp3')">applause</button>
-		<button class="btn" onclick="playSound('audio2.mp3')">boo</button>
-		<button class="btn" onclick="playSound('audio3.mp3')">gasp</button>
-		<button class="btn" onclick="playSound('audio4.mp3')">tada</button>
-		<button class="btn" onclick="playSound('audio5.mp3')">victory</button>
-		<button class="btn" onclick="playSound('audio6.mp3')">wrong</button>
-		<button class="stop" onclick="stopSound()">stop</button>
-	</div>
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div id="buttons">
+    <button class="btn" id="btn1">Audio 1</button>
+    <button class="btn" id="btn2">Audio 2</button>
+    <button class="btn" id="btn3">Audio 3</button>
+    <button class="btn" id="btn4">Audio 4</button>
+    <button class="btn" id="btn5">Audio 5</button>
+	<button class="btn" id="btn6">Audio 6</button>
+    <button class="btn stop" id="stop">Stop</button>
+  </div>
 
+  <script>
+    const buttons = document.querySelectorAll(".btn");
+    const stopButton = document.querySelector(".stop");
+    const sounds = [];
+
+    for (let i = 1; i <= 6; i++) {
+      sounds.push(new Audio(`sounds/audio${i}.mp3`));
+    }
+
+    function playSound(index) {
+      stopSounds();
+      sounds[index].play();
+    }
+
+    function stopSounds() {
+      sounds.forEach((sound) => {
+        sound.pause();
+        sound.currentTime = 0;
+      });
+    }
+
+    buttons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        playSound(index);
+      });
+    });
+
+    stopButton.addEventListener("click", () => {
+      stopSounds();
+    });
+  </script>
 </body>
 
 </html>
