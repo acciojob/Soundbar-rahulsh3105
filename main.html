@@ -14,7 +14,7 @@
     <button class="btn" id="btn3" src="https://gaana.com/playlist/aparvakarangutkar-zabyh-audio">Audio 3</button>
     <button class="btn" id="btn4" src="https://gaana.com/playlist/aparvakarangutkar-zabyh-audio">Audio 4</button>
     <button class="btn" id="btn5" src="https://gaana.com/playlist/aparvakarangutkar-zabyh-audio">Audio 5</button>
-	<button class="btn" id="btn6" src="https://gaana.com/playlist/aparvakarangutkar-zabyh-audio">Audio 6</button>
+    <button class="btn" id="btn6" src="https://gaana.com/playlist/aparvakarangutkar-zabyh-audio">Audio 6</button>
     <button class="btn stop" id="stop">Stop</button>
   </div>
 
@@ -29,7 +29,9 @@
 
     function playSound(index) {
       stopSounds();
-      sounds[index].play();
+      sounds[index].play().catch(error => {
+        console.log(`Failed to play sound: ${error}`);
+      });
     }
 
     function stopSounds() {
