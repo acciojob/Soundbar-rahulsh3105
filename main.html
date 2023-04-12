@@ -18,39 +18,7 @@
     <button class="btn stop" id="stop">Stop</button>
   </div>
 
-  <script>
-    const buttons = document.querySelectorAll(".btn");
-    const stopButton = document.querySelector(".stop");
-    const sounds = [];
-
-    for (let i = 1; i <= 6; i++) {
-      sounds.push(new Audio(`sounds/audio${i}.mp3`));
-    }
-
-    function playSound(index) {
-      stopSounds();
-      sounds[index].play().catch(error => {
-        console.log(`Failed to play sound: ${error}`);
-      });
-    }
-
-    function stopSounds() {
-      sounds.forEach((sound) => {
-        sound.pause();
-        sound.currentTime = 0;
-      });
-    }
-
-    buttons.forEach((button, index) => {
-      button.addEventListener("click", () => {
-        playSound(index);
-      });
-    });
-
-    stopButton.addEventListener("click", () => {
-      stopSounds();
-    });
-  </script>
+   <script type="text/javascript" src="./script.js">
 </body>
 
 </html>
